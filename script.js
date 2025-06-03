@@ -186,8 +186,8 @@ function startRandom() {
 
        const realNum = validPositions[Math.floor(Math.random() * validPositions.length)];
        display.textContent = realNum;
-
-      // 🗣️ Decir el número en voz alta
+      speechSynthesis.cancel(); // Detener voz anterior
+        // 🗣️ Decir el número en voz alta
       const utterance = new SpeechSynthesisUtterance(realNum.toString());
       utterance.lang = "es-ES"; // español
       speechSynthesis.speak(utterance);
