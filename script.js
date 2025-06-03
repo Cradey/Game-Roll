@@ -187,6 +187,11 @@ function startRandom() {
        const realNum = validPositions[Math.floor(Math.random() * validPositions.length)];
        display.textContent = realNum;
 
+      // 🗣️ Decir el número en voz alta
+      const utterance = new SpeechSynthesisUtterance(realNum.toString());
+      utterance.lang = "es-ES"; // español
+      speechSynthesis.speak(utterance);
+
       // 🎲 Animación tipo dado
        display.classList.remove('roll'); // Reiniciar animación
        void display.offsetWidth;         // Forzar reflow
