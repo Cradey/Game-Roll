@@ -4,128 +4,174 @@ body {
   text-align: center;
   padding: 20px;
   height: 100vh;
-  background-color: beige;
+  background: url('images/granja.jpg') no-repeat center center fixed;
+  background-size: cover;
+  backdrop-filter: blur(5px);
 }
 
-h3{
+ul {
+  list-style-type: none;
+  padding: 10px;
+  margin: 0 auto; /* Centrar la lista */
+  display: inline-block; /* Hace que la lista solo ocupe el tamaño de su contenido */
+  background: linear-gradient(45deg, #28a745, #218838);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilos para los párrafos */
+.game-info p {
+  color: #FFFFFF; /* Blanco puro para máxima legibilidad */
+  font-size: 18px; /* Ajustar tamaño si es necesario */
+  font-weight: bold; /* Hace que resalte más */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Agrega sombra para que no se pierda en el fondo */
+}
+
+
+ul li {
+  padding: 8px; /* Espaciado interno */
+  font-size: 16px; /* Tamaño de texto */
+  color: white; /* Color de texto */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3); /* Línea separadora sutil */
+}
+
+ul li:last-child {
+  border-bottom: none; /* Elimina la línea del último elemento */
+}
+
+
+h3 {
   text-align: left;
   color: rgb(0, 0, 0);
+  background-color: rgba(229, 255, 229, 0.8);
+  padding: 10px;
+  border-radius: 10px;
 }
 
-h4{
-  color: red;
+h4 {
+  color: rgb(235, 245, 255); /* Un azul muy claro para buen contraste */
+  background: linear-gradient(45deg, rgba(80, 80, 80, 0.8), rgba(50, 50, 50, 0.9)); /* Tonos oscuros sutiles */
+  padding: 8px;
+  border-radius: 6px; /* Bordes redondeados para un toque moderno */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Sombra ligera */
+  font-weight: bold;
+  text-align: center; /* Centrar el texto */
+  letter-spacing: 1px; /* Espaciado para mejorar la legibilidad */
 }
 
-/* Área de controles */
+
+/* Controles superiores */
 .controls {
   margin-bottom: 20px;
-
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
 
 input {
   margin: 5px;
-  padding: 5px;
-
+  padding: 8px;
+  border-radius: 5px;
+  border: 2px solid #333;
 }
 
+/* Estilo de los botones */
 button {
   margin: 5px;
-  padding: 8px 12px;
+  padding: 10px 15px;
   cursor: pointer;
-  border-radius: 5px;
-  background-color: transparent;
-}
-
-
-/* Botón eliminar oculto por defecto */
-.delete-btn {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  padding: 2px 6px;
-  background-color: red;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 0.8rem;
-  line-height: 1;
-  display: none; /* oculto por defecto */
-  z-index: 10;
-}
-
-/* Mostrar botón solo cuando se pasa el mouse sobre la tarjeta */
-.card:hover .delete-btn {
-  display: block;
-}
-
-
-/* Número aleatorio actual
-#numberDisplay {
-  font-size: 4rem;
+  border-radius: 8px;
   font-weight: bold;
-  text-align: center;
-  padding: 15px;
-  border: 4px solid #444;
-  border-radius: 15px;
-  margin: 20px auto;
-  width: 100px;
-  background-color: #fff;
-  transition: transform 0.3s ease, background-color 0.3s ease;
+  border: none;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
+
+.btn-agregar {
+  color: white;
+  background: linear-gradient(45deg, #28a745, #218838);
+}
+
+.btn-empezar {
+  color: white;
+  background: linear-gradient(45deg, #007bff, #0056b3);
+}
+
+.btn-stop {
+  color: white;
+  background: linear-gradient(45deg, #ff0000, #cc0000);
+}
+
+.btn-limpiar {
+  color: white;
+  background: linear-gradient(45deg, #fbc02d, #f9a825);
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+/* Número aleatorio */
+#numberDisplay {
+  position: absolute;
+  left: 10px;
+  top: 200px;
+  width: 280px;
+  height: 280px;
+  font-size: 48px;
+  font-weight: bold;
+  color: rgb(238, 255, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('images/molino.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50%;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+  transition: transform 0.4s ease;
+}
+
 
 #numberDisplay.flash {
-  background-color: gold;
-  transform: scale(1.2);
-} */
-
-
-#numberDisplay {
-  font-size: 4rem;
-  width: 100px;
-  height: 100px;
-  text-align: center;
-  line-height: 100px;
-  border-radius: 50%;
-  margin: 20px auto;
-  background: #fff;
-  box-shadow: 0 0 10px #aaa;
-  transition: transform 0.6s ease;
-  transform-style: preserve-3d;
+  
+  transform: scale(1.3);
 }
 
-.roll {
-  animation: rollAnim 0.6s ease forwards;
+#numberDisplay.rolling {
+  animation: spin 0.6s linear infinite;
 }
 
-@keyframes rollAnim {
-  0%   { transform: rotateY(0deg) rotateX(0deg); }
-  50%  { transform: rotateY(180deg) rotateX(180deg); }
-  100% { transform: rotateY(360deg) rotateX(360deg); }
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
- 
 
-/* Contenedor de tarjetas en cuadrícula */
+/* Contenedor de tarjetas */
 .container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 columnas */
+  grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
   max-width: 800px;
   margin: auto;
 }
 
-/* Estilos base para cada tarjeta */
+/* Estilos de cada tarjeta */
 .card {
   border: 2px solid #ccc;
   border-radius: 10px;
   padding: 10px;
   transition: 0.3s;
-  background-color: rgb(154, 233, 233);
+  background: linear-gradient(45deg, #a2ffdf, #5dd39e);
   position: relative;
 }
 
-/* Tarjeta activa (seleccionada por número aleatorio) */
+.card:hover {
+  transform: scale(1.05);
+}
+
 .card.active {
   border-color: green;
   background-color: #e5ffe5;
@@ -134,15 +180,6 @@ button {
 .card.highlight {
   box-shadow: 0 0 15px 5px rgba(255, 215, 0, 0.8);
   transform: scale(1.03);
-  transition: all 0.2s ease;
-}
-
-
-/* Números de posición en cada tarjeta */
-.number-label {
-  font-size: 1.2rem;
-  color: #555;
-  margin: 5px 0;
 }
 
 /* Área de los 5 círculos */
@@ -153,23 +190,16 @@ button {
   margin-top: 10px;
 }
 
-/* Círculo apagado */
 .circle {
   width: 20px;
   height: 20px;
   border-radius: 50%;
   background-color: #eee;
-  border: 1px solid #999;
+  border: 2px solid #999;
+  transition: all 0.3s ease-in-out;
 }
 
-/* Círculo activo (encendido) */
 .circle.active {
   background-color: green;
-}
-
-/* Mensaje de ganador */
-.winner-message {
-  margin-top: 10px;
-  font-weight: bold;
-  color: darkgreen;
+  box-shadow: 0 0 8px rgba(0, 255, 0, 0.8);
 }

@@ -161,6 +161,7 @@ function startRandom() {
 
 
     const display = document.getElementById('numberDisplay');
+    display.classList.add('rolling'); // ⬅️ Añadir aquí
 
     rollId = setInterval(() => {
       const fakeNum = Math.floor(Math.random() * 12) + 1;
@@ -180,7 +181,7 @@ function startRandom() {
       count++;
       if (count >= maxRolls) {
         clearInterval(rollId);
-
+        display.classList.remove('rolling'); // ⬅️ Y quitar aquí
         const validPositions = Array.from(usedPositions);
         if (validPositions.length === 0) return;
 
@@ -193,11 +194,6 @@ function startRandom() {
        speechSynthesis.speak(utterance);
       
 
-      // 🎲 Animación tipo dado
-       display.classList.remove('roll'); // Reiniciar animación
-       void display.offsetWidth;         // Forzar reflow
-       display.classList.add('roll');
-   
 
         // 🎉 Animación al número final
         display.classList.add('flash');
@@ -234,13 +230,13 @@ function startRandom() {
 
                 if (winners.length === 0) {
                   msg.textContent = "🏆 1er lugar";
-                  announcement = `¡${playerName}, primer lugar! Felicidades.`;
+                  announcement = `¡${playerName}, primer lugar!`;
                 } else if (winners.length === 1) {
                   msg.textContent = "🥈 2do lugar";
-                  announcement = `¡${playerName}, segundo lugar! Muy bien.`;
+                  announcement = `¡${playerName}, segundo lugar!`;
                 } else if (winners.length === 2) {
                   msg.textContent = "🥉 3er lugar";
-                  announcement = `¡${playerName}, tercer lugar! Excelente.`;
+                  announcement = `¡${playerName}, tercer lugar!`;
                 }
                 winners.push(realNum);
               
@@ -276,6 +272,9 @@ function stopRandom() {
     clearInterval(rollId);
     rollId = null;
   }
+  // 🚀 Detener el giro al finalizar
+  const display = document.getElementById('numberDisplay');
+  display.classList.remove('rolling'); // Detener la animación de giro
 }
 
 /**
