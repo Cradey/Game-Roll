@@ -1,0 +1,175 @@
+/* Estilos generales */
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 20px;
+  height: 100vh;
+  background-color: beige;
+}
+
+h3{
+  text-align: left;
+  color: rgb(0, 0, 0);
+}
+
+h4{
+  color: red;
+}
+
+/* Área de controles */
+.controls {
+  margin-bottom: 20px;
+
+}
+
+input {
+  margin: 5px;
+  padding: 5px;
+
+}
+
+button {
+  margin: 5px;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: transparent;
+}
+
+
+/* Botón eliminar oculto por defecto */
+.delete-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  padding: 2px 6px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 0.8rem;
+  line-height: 1;
+  display: none; /* oculto por defecto */
+  z-index: 10;
+}
+
+/* Mostrar botón solo cuando se pasa el mouse sobre la tarjeta */
+.card:hover .delete-btn {
+  display: block;
+}
+
+
+/* Número aleatorio actual
+#numberDisplay {
+  font-size: 4rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 15px;
+  border: 4px solid #444;
+  border-radius: 15px;
+  margin: 20px auto;
+  width: 100px;
+  background-color: #fff;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+#numberDisplay.flash {
+  background-color: gold;
+  transform: scale(1.2);
+} */
+
+
+#numberDisplay {
+  font-size: 4rem;
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  line-height: 100px;
+  border-radius: 50%;
+  margin: 20px auto;
+  background: #fff;
+  box-shadow: 0 0 10px #aaa;
+  transition: transform 0.6s ease;
+  transform-style: preserve-3d;
+}
+
+.roll {
+  animation: rollAnim 0.6s ease forwards;
+}
+
+@keyframes rollAnim {
+  0%   { transform: rotateY(0deg) rotateX(0deg); }
+  50%  { transform: rotateY(180deg) rotateX(180deg); }
+  100% { transform: rotateY(360deg) rotateX(360deg); }
+}
+
+ 
+
+/* Contenedor de tarjetas en cuadrícula */
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columnas */
+  gap: 1rem;
+  max-width: 800px;
+  margin: auto;
+}
+
+/* Estilos base para cada tarjeta */
+.card {
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  transition: 0.3s;
+  background-color: rgb(154, 233, 233);
+  position: relative;
+}
+
+/* Tarjeta activa (seleccionada por número aleatorio) */
+.card.active {
+  border-color: green;
+  background-color: #e5ffe5;
+}
+
+.card.highlight {
+  box-shadow: 0 0 15px 5px rgba(255, 215, 0, 0.8);
+  transform: scale(1.03);
+  transition: all 0.2s ease;
+}
+
+
+/* Números de posición en cada tarjeta */
+.number-label {
+  font-size: 1.2rem;
+  color: #555;
+  margin: 5px 0;
+}
+
+/* Área de los 5 círculos */
+.circles {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+/* Círculo apagado */
+.circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #eee;
+  border: 1px solid #999;
+}
+
+/* Círculo activo (encendido) */
+.circle.active {
+  background-color: green;
+}
+
+/* Mensaje de ganador */
+.winner-message {
+  margin-top: 10px;
+  font-weight: bold;
+  color: darkgreen;
+}

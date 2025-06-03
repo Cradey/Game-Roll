@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Juego de Cards Aleatorios</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <H1>Bienvenido a Valda</H1>
+  <h3>Reglas y modo de juego:</h3>
+  <h3> Escoje un numero del 1 al 12 , el valor de cada numero es S/10</h3>
+  <h3>Para ganar tienes que obtener 5 puntos verdes en tu casillero</h3>
+  <h4>Hay 3 puestos ganadores:</h4>
+  <h4>1er : S/50  ----  2do: S/20  ---- 3er: S/10</h4>
+
+  <!-- Controles superiores -->
+  <div class="controls">
+    <input type="text" id="nameInput" placeholder="Nombre" />
+    <input type="number" id="positionInput" placeholder="Posición (1-12)" min="1" max="12" />
+    <div class="content-botones">
+      <button id="addBtn" onclick="addCard()">Agregar</button>
+      <button onclick="startRandom()">Empezar</button>
+      <button onclick="stopRandom()">Terminar</button>
+      <button onclick="clearAll()">Limpiar</button>
+    </div>
+    
+  </div>
+
+  <!-- Display del número aleatorio actual -->
+  <div class="number-display" id="numberDisplay">—</div>
+
+  <!-- Contenedor de las tarjetas -->
+  <div class="container" id="cardContainer"></div>
+
+  <!-- Script principal -->
+  <script src="script.js"></script>
+</body>
+</html>
