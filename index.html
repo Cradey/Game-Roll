@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Juego de Cards Aleatorios</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -10,9 +11,10 @@
   <header>
     <h1>Bienvenido a Valda</h1>
     <div class="game-info">
-      <h3>Reglas y modo de juego:Escoge un número del 1 al 12. El valor de cada número es S/3.
-        Para ganar, debes obtener 5 puntos verdes en tu casillero.</h3>
-      
+      <h3 id="descripcion">
+        Reglas y modo de juego: Escoge un número del 1 al 12. El valor de cada número es S/3.
+        Para ganar, debes obtener 5 puntos verdes en tu casillero.
+      </h3>
       <div class="game-horizontal">
         <ul>
           <li><strong>1er lugar:</strong> S/15</li>
@@ -22,17 +24,22 @@
       </div>
     </div>
   </header>
-
+  
   <!-- Controles superiores -->
   <section class="controls">
     <input type="text" id="nameInput" placeholder="Nombre" />
     <input type="number" id="positionInput" placeholder="Posición (1-12)" min="1" max="12" />
     <div class="content-botones">
       <button class="btn-agregar" id="addBtn" onclick="addCard()">Agregar</button>
-      <button class="btn-empezar" onclick="startRandom()">Empezar</button>
-      <button class="btn-stop" onclick="stopRandom()">Terminar</button>
+      <button class="btn-empezar" onclick="empezarJuego()">Empezar</button>
+      <button class="btn-stop" onclick="terminarJuego()">Terminar</button>
       <button class="btn-limpiar" onclick="clearAll()">Limpiar</button>
     </div>
+  </section>
+
+  <!-- Display del número aleatorio actual (molino) -->
+  <section class="display-area oculto">
+    <div id="numberDisplay">—</div>
   </section>
 
   <!-- Contenedor de las tarjetas -->
@@ -40,12 +47,8 @@
     <div class="container" id="cardContainer"></div>
   </section>
 
-  <!-- Display del número aleatorio actual (molino) -->
-  <section class="display-area">
-    <div id="numberDisplay">—</div>
-  </section>
-
   <!-- Script principal -->
   <script src="script.js"></script>
 </body>
 </html>
+
