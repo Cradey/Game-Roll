@@ -26,7 +26,9 @@ winSound.volume = 0.7;
  * Inicializa las 12 tarjetas vacías al cargar
  */
 function createEmptyCards() {
+  
   const container = document.getElementById('cardContainer');
+
   for (let i = 1; i <= 12; i++) {
     const card = document.createElement('div');
     card.classList.add('card');
@@ -35,12 +37,13 @@ function createEmptyCards() {
 
     const title = document.createElement('h3');
     title.textContent = '—'; // nombre vacío
-    card.appendChild(title);
+    
 
     const numberLabel = document.createElement('div');
     numberLabel.className = 'number-label';
     numberLabel.textContent = `#${i}`;
     card.appendChild(numberLabel);
+    card.appendChild(title);
 
     const circlesContainer = document.createElement('div');
     circlesContainer.className = 'circles';
@@ -57,6 +60,7 @@ function createEmptyCards() {
 
     cards[i] = card;
     container.appendChild(card);
+    
   }
 }
 
@@ -282,6 +286,7 @@ function stopRandom() {
  */
 function clearAll() {
   stopRandom();
+  ocultarDisplay();
   usedPositions.clear();
   winners = [];
   document.getElementById('cardContainer').innerHTML = '';
@@ -291,6 +296,42 @@ function clearAll() {
   Object.keys(cards).forEach(k => delete cards[k]); // Vaciar diccionario
   createEmptyCards();
 }
+
+function mostrarDisplay() {
+  const esMovil = window.innerWidth <= 768;
+
+  if (esMovil) {
+    const descripcion = document.getElementById('descripcion');
+    const display = document.querySelector('.display-area');
+
+    if (descripcion) descripcion.classList.add('oculto');  // oculta visualmente sin borrar el espacio
+    if (display) display.classList.remove('oculto');
+  }
+}
+
+function ocultarDisplay() {
+  const esMovil = window.innerWidth <= 768;
+
+  if (esMovil) {
+    const descripcion = document.getElementById('descripcion');
+    const display = document.querySelector('.display-area');
+
+    if (descripcion) descripcion.classList.remove('oculto');
+    if (display) display.classList.add('oculto');
+  }
+}
+
+
+function empezarJuego() {
+  mostrarDisplay();
+  startRandom();
+}
+
+function terminarJuego() {
+  ocultarDisplay();
+  stopRandom();
+}
+
 
 
 window.onload = createEmptyCards;
