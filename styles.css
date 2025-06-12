@@ -114,6 +114,11 @@ button:hover {
   transform: scale(1.05);
 }
 
+/* Mostrar por defecto en PC */
+.display-area {
+  visibility: visible;
+}
+
 /* Molino */
 #numberDisplay {
   position: absolute;
@@ -206,7 +211,12 @@ button:hover {
   box-shadow: 0 0 8px rgba(0, 255, 0, 0.8);
 }
 
-/* Responsive: Móvil */
+.layout-flex {
+  display: flex;
+  flex-direction: column;
+}
+
+
 /* Responsive: Móvil */
 @media (max-width: 768px) {
   body {
@@ -218,6 +228,11 @@ button:hover {
     grid-template-columns: repeat(3, 1fr);
     gap: 0.4rem;
   }
+
+  .cards-container {
+    order: 1;
+  }
+
 
   .card {
     width: 80px;
@@ -244,8 +259,10 @@ button:hover {
     position: relative;
     
   }
-
+  
+/* Ocultar solo en móviles */
   .display-area {
+    visibility: hidden;
     position: absolute;
     top: -350px;
     left: 35%;
@@ -270,6 +287,7 @@ button:hover {
   .controls {
     align-items: center;
     gap: 8px;
+    order: 2;
   }
 
   input {
@@ -295,5 +313,22 @@ button:hover {
 
   .oculto{
     visibility: hidden;
+  }
+}
+
+/* Orden normal para escritorio */
+@media (min-width: 769px) {
+  .layout-flex {
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+  }
+
+  .cards-container {
+    order: 1;
+  }
+
+  .controls {
+    order: -1;
   }
 }
