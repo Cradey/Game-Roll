@@ -114,10 +114,6 @@ button:hover {
   transform: scale(1.05);
 }
 
-/* Mostrar por defecto en PC */
-.display-area {
-  visibility: visible;
-}
 
 /* Molino */
 #numberDisplay {
@@ -262,7 +258,6 @@ button:hover {
   
 /* Ocultar solo en móviles */
   .display-area {
-    visibility: hidden;
     position: absolute;
     top: -350px;
     left: 35%;
