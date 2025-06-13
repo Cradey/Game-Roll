@@ -249,7 +249,7 @@ button:hover {
 /* Ocultar solo en móviles */
   .display-area {
     position: absolute;
-    top: -350px;
+    top: -380px;
     left: 35%;
     display: flex;
     justify-content: center;
